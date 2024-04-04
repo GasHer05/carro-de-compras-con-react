@@ -36,6 +36,21 @@ class App extends Component {
     });
   };
 
+  quitarDelCarro = (producto) => {
+    const { carro } = this.state;
+
+    // Buscar el producto en el carro
+    const index = carro.findIndex((item) => item.name === producto.name);
+
+    // Si el producto está en el carro y su cantidad es mayor que 0, reducir la cantidad
+    if (index !== -1 && carro[index].cantidad > 0) {
+      const newCarro = [...carro];
+      newCarro[index].cantidad--;
+
+      this.setState({ carro: newCarro });
+    }
+  };
+
   mostrarCarro = () => {
     if (!this.state.carro.length) {
       return;
@@ -56,6 +71,7 @@ class App extends Component {
           <Title />
           <Productos
             agregarAlCarro={this.agregarAlCarro}
+            quitarDelCarro={this.quitarDelCarro}
             productos={this.state.productos}
           />
         </Layout>

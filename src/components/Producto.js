@@ -16,7 +16,7 @@ const styles = {
 
 class Producto extends Component {
   render() {
-    const { producto, agregarAlCarro } = this.props;
+    const { producto, agregarAlCarro, quitarDelCarro } = this.props;
     return (
       <div style={styles.producto}>
         <img style={styles.img} alt={producto.name} src={producto.img} />
@@ -25,6 +25,7 @@ class Producto extends Component {
         <Button onClick={() => agregarAlCarro(producto)}>
           Agregar al carro
         </Button>
+        <Button onClick={() => quitarDelCarro(producto)}>Quitar</Button>
       </div>
     );
   }
